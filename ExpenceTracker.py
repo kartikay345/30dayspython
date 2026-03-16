@@ -34,3 +34,20 @@ while going_on:
         print('hope to see you next time ')
         going_on=False
 
+
+category_summary = {}
+
+for expense in all_expenses:
+    cat = expense['Category']
+    amt = expense['Amount']
+    
+    if cat in category_summary:
+        category_summary[cat] += amt # Add to the existing total
+    else:
+        category_summary[cat] = amt  # Create the drawer and put the first amount in
+
+print("\n" + "="*10 + " FINAL CATEGORY REPORT " + "="*10)
+for category, total in category_summary.items():
+    print(f"{category}: ${total:.2f}")  
+print("="*44)        
+
